@@ -35,30 +35,30 @@ export default function AddReviewForm({ onAddReview }) {
   };
 
   return (
-    <section className="py-20 px-8 bg-white">
-      <h2 className="text-3xl font-bold text-center mb-16 text-gray-900">Write a Review</h2>
-      <form onSubmit={handleSubmit} className="max-w-xl mx-auto space-y-6">
+    <section className="max-w-6xl mx-auto px-8 py-12 border-t border-gray-200">
+      <h2 className="text-2xl font-bold mb-6 text-gray-900">Write a Review</h2>
+      <form onSubmit={handleSubmit} className="max-w-2xl space-y-6">
         <div>
-          <label htmlFor="name" className="block mb-2">Name</label>
+          <label htmlFor="name" className="block mb-2 text-gray-700">Name</label>
           <input
             type="text"
             id="name"
             name="name"
             value={formData.name}
             onChange={handleChange}
-            className="w-full p-3 bg-gray-50 rounded"
+            className="w-full p-3 border border-gray-300 rounded focus:outline-none focus:border-teal-600"
             required
           />
         </div>
 
         <div>
-          <label htmlFor="rating" className="block mb-2">Rating</label>
+          <label htmlFor="rating" className="block mb-2 text-gray-700">Rating</label>
           <select
             id="rating"
             name="rating"
             value={formData.rating}
             onChange={handleChange}
-            className="w-full p-3 bg-gray-50 rounded"
+            className="w-full p-3 border border-gray-300 rounded focus:outline-none focus:border-teal-600"
           >
             <option value={5}>5</option>
             <option value={4}>4</option>
@@ -69,21 +69,21 @@ export default function AddReviewForm({ onAddReview }) {
         </div>
 
         <div>
-          <label htmlFor="message" className="block mb-2">Your Review</label>
+          <label htmlFor="message" className="block mb-2 text-gray-700">Your Review</label>
           <textarea
             id="message"
             name="message"
             value={formData.message}
             onChange={handleChange}
             rows="5"
-            className="w-full p-3 bg-gray-50 rounded resize-none"
+            className="w-full p-3 border border-gray-300 rounded resize-none focus:outline-none focus:border-teal-600"
             required
           />
         </div>
 
         <button 
           type="submit" 
-          className="w-full p-3 bg-pink-600 text-white rounded"
+          className="px-8 py-3 bg-teal-600 text-white rounded hover:bg-teal-700"
         >
           Submit Review
         </button>

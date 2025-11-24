@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Header from './components/Header.jsx';
-import Hero from './components/Hero.jsx';
+import ProductSection from './components/ProductSection.jsx';
 import Features from './components/Features.jsx';
 import Reviews from './components/Reviews.jsx';
 import AddReviewForm from './components/AddReviewForm.jsx';
@@ -23,7 +23,7 @@ export default function App() {
   return (
     <div className="app">
       <Header />
-      <Hero />
+      <ProductSection />
       <Features />
       <Reviews reviews={reviews} />
       <AddReviewForm onAddReview={handleAddReview} />

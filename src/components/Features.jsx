@@ -10,12 +10,13 @@ export default function Features() {
   ];
 
   return (
-    <section className="py-20 px-8 bg-white">
-      <h2 className="text-3xl font-bold text-center mb-16 text-gray-900">Features</h2>
-      <ul className="max-w-2xl mx-auto space-y-3 text-gray-700">
+    <section className="max-w-6xl mx-auto px-8 py-12 border-t border-gray-200">
+      <h2 className="text-2xl font-bold mb-6 text-gray-900">Product Details</h2>
+      <ul className="space-y-3 text-gray-700">
         {features.map((feature, index) => (
-          <li key={index} className="text-lg leading-relaxed">
-            • {feature}
+          <li key={index} className="flex items-start">
+            <span className="text-teal-600 mr-3">•</span>
+            <span>{feature}</span>
           </li>
         ))}
       </ul>
