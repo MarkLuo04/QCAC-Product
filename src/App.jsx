@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Header from './components/Header.jsx';
 import Hero from './components/Hero.jsx';
 import Features from './components/Features.jsx';
 import Reviews from './components/Reviews.jsx';
@@ -21,6 +22,7 @@ export default function App() {
 
   return (
     <div className="app">
+      <Header />
       <Hero />
       <Features />
       <Reviews reviews={reviews} />

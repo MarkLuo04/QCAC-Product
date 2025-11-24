@@ -35,28 +35,30 @@ export default function AddReviewForm({ onAddReview }) {
   };
 
   return (
-    <section>
-      <h2></h2>
-      <form onSubmit={handleSubmit}>
+    <section className="py-20 px-8 bg-white">
+      <h2 className="text-3xl font-bold text-center mb-16 text-gray-900">Write a Review</h2>
+      <form onSubmit={handleSubmit} className="max-w-xl mx-auto space-y-6">
         <div>
-          <label htmlFor="name"></label>
+          <label htmlFor="name" className="block mb-2">Name</label>
           <input
             type="text"
             id="name"
             name="name"
             value={formData.name}
             onChange={handleChange}
+            className="w-full p-3 bg-gray-50 rounded"
             required
           />
         </div>
 
         <div>
-          <label htmlFor="rating"></label>
+          <label htmlFor="rating" className="block mb-2">Rating</label>
           <select
             id="rating"
             name="rating"
             value={formData.rating}
             onChange={handleChange}
+            className="w-full p-3 bg-gray-50 rounded"
           >
             <option value={5}>5</option>
             <option value={4}>4</option>
@@ -67,18 +69,24 @@ export default function AddReviewForm({ onAddReview }) {
         </div>
 
         <div>
-          <label htmlFor="message"></label>
+          <label htmlFor="message" className="block mb-2">Your Review</label>
           <textarea
             id="message"
             name="message"
             value={formData.message}
             onChange={handleChange}
-            rows="4"
+            rows="5"
+            className="w-full p-3 bg-gray-50 rounded resize-none"
             required
           />
         </div>
 
-        <button type="submit"></button>
+        <button 
+          type="submit" 
+          className="w-full p-3 bg-pink-600 text-white rounded"
+        >
+          Submit Review
+        </button>
       </form>
     </section>
   );

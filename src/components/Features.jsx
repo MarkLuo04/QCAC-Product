@@ -2,25 +2,23 @@ import React from 'react';
 
 export default function Features() {
   const features = [
-    {
-      icon: '',
-      title: '',
-      description: ''
-    },
+    '16 oz glass cup with a glass straw and bamboo lid',
+    'Pink elements change from pastel pink to fuschia in temperatures below 10°C',
+    'Holds hot and cold drinks',
+    'Designs made with permanent Cricut vinyl and heat-sealed for longevity',
+    'Hand-wash only'
   ];
 
   return (
-    <section>
-      <h2></h2>
-      <div>
+    <section className="py-20 px-8 bg-white">
+      <h2 className="text-3xl font-bold text-center mb-16 text-gray-900">Features</h2>
+      <ul className="max-w-2xl mx-auto space-y-3 text-gray-700">
         {features.map((feature, index) => (
-          <div key={index}>
-            <div>{feature.icon}</div>
-            <h3>{feature.title}</h3>
-            <p>{feature.description}</p>
-          </div>
+          <li key={index} className="text-lg leading-relaxed">
+            • {feature}
+          </li>
         ))}
-      </div>
+      </ul>
     </section>
   );
 }
