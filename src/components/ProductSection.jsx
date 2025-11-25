@@ -8,7 +8,7 @@ export default function ProductSection() {
   // Product data 
   const product = {
     brand: 'Linko Art',
-    name: 'Yae Miko Color-Changing Glass Cup',
+    name: 'Yae Miko Cherry Blossom (Genshin Impact) Colour-Changing Glass Cup',
     price: 35.00,
     description: 'Yae Miko inspired glass, featuring her kitsune form and cherry blossoms! Pink elements change from pastel pink to fuschia in temperatures below 10°C.'
   };
