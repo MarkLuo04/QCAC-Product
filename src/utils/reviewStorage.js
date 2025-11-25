@@ -1,6 +1,7 @@
 // Sample reviews data 
 export const sampleReviews = [];
 
+
 // localStorage key
 const STORAGE_KEY = 'product_reviews';
 
