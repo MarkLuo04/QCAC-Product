@@ -21,7 +21,7 @@ export default function ImageGallery({ images }) {
             onClick={() => setCurrentImageIndex(index)}
             className={`w-16 h-16 bg-teal-50 rounded border-2 ${
               currentImageIndex === index ? 'border-teal-600' : 'border-transparent'
-            } overflow-hidden`}
+            } overflow-hidden cursor-pointer`}
           >
             <img src={image.src} alt={image.alt} className="w-full h-full object-cover" />
           </button>
@@ -29,7 +29,7 @@ export default function ImageGallery({ images }) {
       </div>
 
       {/* Main Image */}
-      <div className="relative flex-1 bg-teal-50 rounded-lg p-8">
+      <div className="relative flex-1 bg-teal-50 rounded-lg p-8 group">
         <img 
           src={images[currentImageIndex].src} 
           alt={images[currentImageIndex].alt} 
@@ -41,7 +41,7 @@ export default function ImageGallery({ images }) {
           <>
             <button
               onClick={prevImage}
-              className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white p-2 rounded-full shadow-lg"
+              className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white p-2 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer"
               aria-label="Previous image"
             >
               <svg className="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -50,7 +50,7 @@ export default function ImageGallery({ images }) {
             </button>
             <button
               onClick={nextImage}
-              className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white p-2 rounded-full shadow-lg"
+              className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white p-2 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer"
               aria-label="Next image"
             >
               <svg className="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
