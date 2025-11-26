@@ -1,5 +1,25 @@
+import emptyCup from '../images/empty_cup.jpg';
 // Sample reviews data 
-export const sampleReviews = [];
+export const sampleReviews = [
+  {
+    name: "Mark Luo",
+    rating: 5,
+    message: "Great cup would buy again",
+    images: []
+  },
+  {
+    name: "Yae Miko",
+    rating: 5,
+    message: "I love the color-changing effect and the aesthetics of the cup!",
+    images: []
+  },
+  {
+    name: "John Appleseed",
+    rating: 1,
+    message: "Bad quality product. I put it in the dishwasher multiple times and all the designs have been rubbed off. The straw also fell off and I can no longer find it.",
+    images: [emptyCup]
+  }
+];
 
 
 // localStorage key

@@ -3,7 +3,6 @@ import Header from './components/Header.jsx';
 import ProductSection from './components/ProductSection.jsx';
 import Features from './components/Features.jsx';
 import Reviews from './components/Reviews.jsx';
-import AddReviewForm from './components/AddReviewForm.jsx';
 import { getAllReviews, addNewReview } from './utils/reviewStorage.js';
 
 export default function App() {
@@ -25,8 +24,7 @@ export default function App() {
       <Header />
       <ProductSection />
       <Features />
-      <Reviews reviews={reviews} />
-      <AddReviewForm onAddReview={handleAddReview} />
+      <Reviews reviews={reviews} onAddReview={handleAddReview} />
     </div>
   );
 }

@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { ThumbsUp } from 'lucide-react';
+import { ThumbsUp, X } from 'lucide-react';
+import AddReviewForm from './AddReviewForm.jsx';
 
 const HELPFUL_STORAGE_KEY = 'review_helpful_data';
 
-export default function Reviews({ reviews }) {
+export default function Reviews({ reviews, onAddReview }) {
   // Track helpful counts and clicked state for each review
   const [helpfulData, setHelpfulData] = useState({ counts: [], clicked: [] });
+  const [isFormVisible, setIsFormVisible] = useState(false);
+  const [selectedImage, setSelectedImage] = useState(null);
 
   // Load helpful data from localStorage
   useEffect(() => {
@@ -54,6 +57,40 @@ export default function Reviews({ reviews }) {
     saveHelpfulData(newData);
   };
 
+  // Handle review submission
+  const handleReviewSubmit = (reviewData) => {
+    onAddReview(reviewData);
+    setIsFormVisible(false);
+  };
+
+  // Handle image modal
+  const openImageModal = (image) => {
+    setSelectedImage(image);
+  };
+
+  const closeImageModal = () => {
+    setSelectedImage(null);
+  };
+
+  // Close modal on ESC key
+  useEffect(() => {
+    const handleEscape = (e) => {
+      if (e.key === 'Escape') {
+        closeImageModal();
+      }
+    };
+
+    if (selectedImage) {
+      document.addEventListener('keydown', handleEscape);
+      document.body.style.overflow = 'hidden';
+    }
+
+    return () => {
+      document.removeEventListener('keydown', handleEscape);
+      document.body.style.overflow = 'unset';
+    };
+  }, [selectedImage]);
+
   // Calculate average rating
   const averageRating = reviews.length > 0
     ? (reviews.reduce((sum, review) => sum + review.rating, 0) / reviews.length).toFixed(1)
@@ -67,26 +104,70 @@ export default function Reviews({ reviews }) {
 
   // Render star display
   const renderStars = (rating) => {
-    return [...Array(5)].map((_, i) => (
-      <span key={i} className={i < rating ? "text-teal-600" : "text-gray-300"}>★</span>
-    ));
+    return [...Array(5)].map((_, i) => {
+      const fillPercentage = Math.min(Math.max(rating - i, 0), 1);
+      
+      if (fillPercentage === 1) {
+        // Full star
+        return <span key={i} className="text-teal-600">★</span>;
+      } else if (fillPercentage === 0) {
+        // Empty star
+        return <span key={i} className="text-gray-300">★</span>;
+      } else {
+        // Partial star
+        return (
+          <span key={i} className="relative inline-block">
+            <span className="text-gray-300">★</span>
+            <span 
+              className="absolute top-0 left-0 text-teal-600 overflow-hidden"
+              style={{ width: `${fillPercentage * 100}%` }}
+            >
+              ★
+            </span>
+          </span>
+        );
+      }
+    });
   };
 
   return (
-    <section className="max-w-6xl mx-auto px-8 py-12 border-t border-gray-200">
-      <h2 className="text-2xl font-bold mb-6 text-gray-900">Customer Reviews</h2>
+    <>
+      {/* Image Modal */}
+      {selectedImage && (
+        <div 
+          className="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center p-4"
+          onClick={closeImageModal}
+        >
+          <button
+            onClick={closeImageModal}
+            className="absolute top-4 right-4 text-white hover:text-gray-300 transition-colors"
+            aria-label="Close"
+          >
+            <X size={32} />
+          </button>
+          <img
+            src={selectedImage}
+            alt="Review photo full size"
+            className="max-w-full max-h-full object-contain"
+            onClick={(e) => e.stopPropagation()}
+          />
+        </div>
+      )}
+
+      <section className="max-w-6xl mx-auto px-8 py-12 border-t border-gray-200">
+        <h2 className="text-2xl font-bold mb-6 text-gray-900">Customer Reviews</h2>
       
       {reviews.length === 0 ? (
         <p className="text-gray-500 py-8">No reviews yet. Be the first to review!</p>
       ) : (
         <>
           {/* Rating Summary */}
-          <div className="mb-8 pb-8 border-b border-gray-200">
+          <div className="mb-10">
             <div className="flex items-start gap-8">
               {/* Average Rating */}
               <div className="text-center">
                 <div className="text-5xl font-bold text-gray-900 mb-2">{averageRating}</div>
-                <div className="flex text-xl mb-1">{renderStars(Math.round(averageRating))}</div>
+                <div className="flex text-xl mb-1">{renderStars(parseFloat(averageRating))}</div>
                 <div className="text-sm text-gray-600">{reviews.length} {reviews.length === 1 ? 'review' : 'reviews'}</div>
               </div>
 
@@ -108,6 +189,26 @@ export default function Reviews({ reviews }) {
             </div>
           </div>
 
+          {/* Write Review Button and Form */}
+          <div className="mb-10">
+            {!isFormVisible ? (
+              <button
+                onClick={() => setIsFormVisible(true)}
+                className="px-6 py-3 border-2 border-teal-600 text-teal-600 rounded-xl hover:bg-teal-50 transition-all font-medium cursor-pointer"
+              >
+                Write a Review
+              </button>
+            ) : (
+              <div className="bg-gray-50 rounded-2xl p-6 border border-gray-200">
+                <h3 className="text-lg font-semibold text-gray-900 mb-4">Write a Review</h3>
+                <AddReviewForm 
+                  onAddReview={handleReviewSubmit}
+                  onCancel={() => setIsFormVisible(false)}
+                />
+              </div>
+            )}
+          </div>
+
           {/* Individual Reviews */}
           <div className="space-y-4">
             {reviews.map((review, index) => (
@@ -127,6 +228,22 @@ export default function Reviews({ reviews }) {
                   </div>
                 </div>
                 <p className="text-gray-700 leading-relaxed mt-3">{review.message}</p>
+                
+                {/* Review Images */}
+                {review.images && review.images.length > 0 && (
+                  <div className="flex flex-wrap gap-2 mt-4">
+                    {review.images.map((image, imgIndex) => (
+                      <img
+                        key={imgIndex}
+                        src={image}
+                        alt={`Review photo ${imgIndex + 1}`}
+                        className="w-24 h-24 object-cover rounded-lg border border-gray-200 cursor-pointer"
+                        onClick={() => openImageModal(image)}
+                      />
+                    ))}
+                  </div>
+                )}
+                
                 <button 
                   onClick={() => handleHelpfulClick(index)}
                   disabled={helpfulData.clicked[index]}
@@ -144,6 +261,7 @@ export default function Reviews({ reviews }) {
           </div>
         </>
       )}
-    </section>
+      </section>
+    </>
   );
 }
