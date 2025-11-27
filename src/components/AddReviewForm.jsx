@@ -111,7 +111,7 @@ export default function AddReviewForm({ onAddReview, onCancel }) {
                 onClick={() => handleStarClick(star)}
                 onMouseEnter={() => setHoverRating(star)}
                 className="text-3xl transition-colors focus:outline-none cursor-pointer"
-              >
+          >
                 <span className={
                   star <= (hoverRating || formData.rating)
                     ? 'text-teal-600'
@@ -123,23 +123,23 @@ export default function AddReviewForm({ onAddReview, onCancel }) {
             ))}
           </div>
         </div>
-      </div>
+        </div>
 
-      <div>
+        <div>
         <label htmlFor="message" className="block mb-2 text-sm font-medium text-gray-700">
           Your Review
         </label>
-        <textarea
-          id="message"
-          name="message"
-          value={formData.message}
-          onChange={handleChange}
+          <textarea
+            id="message"
+            name="message"
+            value={formData.message}
+            onChange={handleChange}
           rows="4"
           className="w-full px-4 py-2.5 border border-gray-300 rounded-xl resize-none focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all"
           placeholder="Share your experience with this product..."
-          required
-        />
-      </div>
+            required
+          />
+        </div>
 
       {/* Image Upload */}
       <div>
@@ -203,6 +203,6 @@ export default function AddReviewForm({ onAddReview, onCancel }) {
           Cancel
         </button>
       </div>
-    </form>
+      </form>
   );
 }

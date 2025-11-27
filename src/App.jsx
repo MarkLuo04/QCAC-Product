@@ -3,6 +3,7 @@ import Header from './components/Header.jsx';
 import ProductSection from './components/ProductSection.jsx';
 import Features from './components/Features.jsx';
 import Reviews from './components/Reviews.jsx';
+import Footer from './components/Footer.jsx';
 import { getAllReviews, addNewReview } from './utils/reviewStorage.js';
 
 export default function App() {
@@ -25,6 +26,7 @@ export default function App() {
       <ProductSection />
       <Features />
       <Reviews reviews={reviews} onAddReview={handleAddReview} />
+      <Footer />
     </div>
   );
 }
