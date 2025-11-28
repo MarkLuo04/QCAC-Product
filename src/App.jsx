@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Header from './components/Header.jsx';
 import ProductSection from './components/ProductSection.jsx';
 import Features from './components/Features.jsx';
+import RelatedProducts from './components/RelatedProducts.jsx';
 import Reviews from './components/Reviews.jsx';
 import Footer from './components/Footer.jsx';
 import { getAllReviews, addNewReview } from './utils/reviewStorage.js';
@@ -25,6 +26,7 @@ export default function App() {
       <Header />
       <ProductSection />
       <Features />
+      <RelatedProducts />
       <Reviews reviews={reviews} onAddReview={handleAddReview} />
       <Footer />
     </div>

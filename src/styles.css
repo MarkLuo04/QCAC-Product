@@ -22,3 +22,27 @@ h1, h2, h3, h4, h5, h6 {
 .animate-slideDown {
   animation: slideDown 0.3s ease-out;
 }
+
+/* Custom Scrollbar */
+.overflow-x-auto {
+  scrollbar-width: thin;
+  scrollbar-color: #d1d5db #f3f4f6;
+}
+
+.overflow-x-auto::-webkit-scrollbar {
+  height: 8px;
+}
+
+.overflow-x-auto::-webkit-scrollbar-track {
+  background: #f3f4f6;
+  border-radius: 10px;
+}
+
+.overflow-x-auto::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 10px;
+}
+
+.overflow-x-auto::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
+}
