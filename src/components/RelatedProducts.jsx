@@ -89,7 +89,7 @@ export default function RelatedProducts() {
       >
         You May Also Like
       </motion.h2>
-
+      
       {/* Horizontal Carousel */}
       <div className="overflow-x-auto">
         <motion.div
@@ -112,7 +112,7 @@ export default function RelatedProducts() {
                   className="w-full h-full object-cover"
                 />
               </div>
-              <h3
+              <h3 
                 className="font-medium text-gray-900 text-sm mb-1 transition-colors hover:text-primary"
               >
                 {product.name}

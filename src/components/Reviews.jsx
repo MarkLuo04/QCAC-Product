@@ -144,38 +144,38 @@ export default function Reviews({ reviews, onAddReview }) {
     <>
       {/* Image Modal with fade animation */}
       <AnimatePresence>
-        {selectedImage && (
+      {selectedImage && (
           <motion.div
-            className="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center p-4"
-            onClick={closeImageModal}
+          className="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center p-4"
+          onClick={closeImageModal}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={ANIMATIONS.TRANSITIONS.easeOut}
-          >
+        >
             <motion.button
-              onClick={closeImageModal}
-              className="absolute top-4 right-4 text-white hover:text-gray-300 transition-colors"
-              aria-label="Close"
+            onClick={closeImageModal}
+            className="absolute top-4 right-4 text-white hover:text-gray-300 transition-colors"
+            aria-label="Close"
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               exit={{ scale: 0 }}
               transition={{ delay: 0.2, duration: 0.2, ...ANIMATIONS.TRANSITIONS.spring }}
-            >
-              <X size={32} />
+          >
+            <X size={32} />
             </motion.button>
             <motion.img
-              src={selectedImage}
-              alt="Review photo full size"
-              className="max-w-full max-h-full object-contain"
-              onClick={(e) => e.stopPropagation()}
+            src={selectedImage}
+            alt="Review photo full size"
+            className="max-w-full max-h-full object-contain"
+            onClick={(e) => e.stopPropagation()}
               initial={ANIMATIONS.VARIANTS.scaleIn.initial}
               animate={ANIMATIONS.VARIANTS.scaleIn.animate}
               exit={ANIMATIONS.VARIANTS.scaleIn.initial}
               transition={ANIMATIONS.TRANSITIONS.spring}
-            />
+          />
           </motion.div>
-        )}
+      )}
       </AnimatePresence>
 
       <motion.section
@@ -301,12 +301,12 @@ export default function Reviews({ reviews, onAddReview }) {
                   </div>
                 )}
                 
-                <button
+                <button 
                   onClick={() => handleHelpfulClick(index)}
                   disabled={helpfulData.clicked[index]}
                   className={`mt-3 flex items-center gap-2 text-sm cursor-pointer transition-colors ${
-                    helpfulData.clicked[index]
-                      ? 'text-primary'
+                    helpfulData.clicked[index] 
+                      ? 'text-primary' 
                       : 'text-text-secondary hover:text-primary'
                   }`}
                 >

@@ -55,10 +55,10 @@ export default function ProductSection() {
     >
       <div className="grid md:grid-cols-[1.15fr_1fr] gap-12 items-start">
         <motion.div variants={itemVariants}>
-          <ImageGallery images={images} />
+        <ImageGallery images={images} />
         </motion.div>
         <motion.div variants={itemVariants}>
-          <ProductInfo product={product} />
+        <ProductInfo product={product} />
         </motion.div>
       </div>
     </motion.section>

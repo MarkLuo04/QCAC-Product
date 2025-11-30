@@ -54,13 +54,13 @@ export default function Header() {
           {['Home', 'Catalog', 'Contact'].map((item, index) => (
             <motion.a
               key={item}
-              href="#"
+            href="#" 
               variants={navItemVariants}
               transition={{ duration: 0.4 }}
-              className="text-white/90 hover:text-white font-medium transition-all relative group"
-            >
+            className="text-white/90 hover:text-white font-medium transition-all relative group"
+          >
               {item}
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all group-hover:w-full"></span>
+            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all group-hover:w-full"></span>
             </motion.a>
           ))}
         </motion.div>
@@ -70,10 +70,10 @@ export default function Header() {
           variants={logoVariants}
           initial="hidden"
           animate="visible"
-          src={linkoBanner}
-          alt="Linko Art"
+          src={linkoBanner} 
+          alt="Linko Art" 
           className="absolute left-1/2 -translate-x-1/2 h-full max-w-[180px] sm:max-w-md"
-          style={{ objectFit: 'contain' }}
+          style={{ objectFit: 'contain' }} 
         />
 
         {/* Icons */}
@@ -90,7 +90,7 @@ export default function Header() {
           <motion.button
             variants={navItemVariants}
             transition={{ duration: 0.4 }}
-            className="p-2 text-white/90 hover:text-white hover:bg-white/20 rounded-lg transition-all cursor-pointer hidden sm:flex"
+            className="p-2 text-white/90 hover:text-white hover:bg-white/20 rounded-lg transition-all cursor-pointer hidden sm:flex" 
             aria-label="Search"
           >
             <Search size={20} />
@@ -98,7 +98,7 @@ export default function Header() {
           <motion.button
             variants={navItemVariants}
             transition={{ duration: 0.4 }}
-            className="p-2 text-white/90 hover:text-white hover:bg-white/20 rounded-lg transition-all cursor-pointer"
+            className="p-2 text-white/90 hover:text-white hover:bg-white/20 rounded-lg transition-all cursor-pointer" 
             aria-label="Login"
           >
             <User size={20} />
@@ -106,7 +106,7 @@ export default function Header() {
           <motion.button
             variants={navItemVariants}
             transition={{ duration: 0.4 }}
-            className="p-2 text-white/90 hover:text-white hover:bg-white/20 rounded-lg transition-all cursor-pointer"
+            className="p-2 text-white/90 hover:text-white hover:bg-white/20 rounded-lg transition-all cursor-pointer" 
             aria-label="Shopping Cart"
           >
             <ShoppingCart size={20} />
@@ -116,7 +116,7 @@ export default function Header() {
 
       {/* Mobile Menu Dropdown */}
       <AnimatePresence>
-        {isMobileMenuOpen && (
+      {isMobileMenuOpen && (
           <motion.div
             className="lg:hidden border-t border-header-hover bg-header overflow-hidden"
             initial={{ height: 0, opacity: 0 }}
@@ -129,16 +129,16 @@ export default function Header() {
             initial="hidden"
             animate="visible"
             transition={{ staggerChildren: 0.1 }}
-          >
+            >
             {['Home', 'Catalog', 'Contact'].map((item) => (
               <motion.a
                 key={item}
-                href="#"
+              href="#" 
                 variants={navItemVariants}
                 transition={{ duration: 0.3 }}
-                className="text-white/90 hover:text-white font-medium transition-colors py-2"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
+              className="text-white/90 hover:text-white font-medium transition-colors py-2"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
                 {item}
               </motion.a>
             ))}
@@ -153,7 +153,7 @@ export default function Header() {
             </motion.button>
           </motion.div>
         </motion.div>
-        )}
+      )}
       </AnimatePresence>
     </header>
   );

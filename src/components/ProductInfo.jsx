@@ -119,12 +119,12 @@ export default function ProductInfo({ product }) {
         className="flex gap-3 pt-2"
         variants={itemVariants}
       >
-        <button
+        <button 
           className="flex-1 text-white py-3 px-6 rounded-lg font-medium cursor-pointer bg-primary hover:bg-primary-hover transition-colors"
         >
           Add to Cart
         </button>
-        <button
+        <button 
           className="flex-1 bg-white py-3 px-6 rounded-lg font-medium cursor-pointer border-2 border-primary text-primary hover:bg-primary-bg transition-colors"
         >
           Buy Now
