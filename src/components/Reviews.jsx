@@ -179,8 +179,10 @@ export default function Reviews({ reviews, onAddReview }) {
                     <div className="flex-1 h-5 bg-gray-200 rounded-full overflow-hidden">
                       <div 
                         className="h-full"
-                        style={{ backgroundColor: 'var(--color-primary)' }} 
-                        style={{ width: `${reviews.length > 0 ? (ratingCounts[star - 1] / reviews.length) * 100 : 0}%` }}
+                        style={{ 
+                          backgroundColor: 'var(--color-primary)',
+                          width: `${reviews.length > 0 ? (ratingCounts[star - 1] / reviews.length) * 100 : 0}%`
+                        }}
                       />
                     </div>
                     <span className="text-sm text-gray-600 w-8">{ratingCounts[star - 1]}</span>
