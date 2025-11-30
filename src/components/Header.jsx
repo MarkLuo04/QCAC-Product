@@ -6,7 +6,7 @@ export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b shadow-sm" style={{ backgroundColor: 'var(--color-header)', borderColor: 'var(--color-header-border)' }}>
+    <header className="sticky top-0 z-50 border-b shadow-sm bg-header border-header-hover">
       <div className="relative max-w-6xl mx-auto px-4 sm:px-8 flex items-center justify-between h-20 sm:h-[100px]">
         {/* Mobile Menu Button */}
         <button
@@ -75,7 +75,7 @@ export default function Header() {
 
       {/* Mobile Menu Dropdown */}
       {isMobileMenuOpen && (
-        <div className="lg:hidden border-t" style={{ borderColor: 'var(--color-header-border)', backgroundColor: 'var(--color-header)' }}>
+        <div className="lg:hidden border-t border-header-hover bg-header">
           <div className="max-w-6xl mx-auto px-4 py-4 flex flex-col gap-4">
             <a 
               href="#" 

@@ -14,7 +14,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="border-t" style={{ borderColor: 'var(--color-primary-light)', backgroundColor: 'var(--color-primary-bg)' }}>
+    <footer className="border-t border-primary-light bg-primary-bg">
       <div className="max-w-6xl mx-auto px-8 py-10">
         <div className="flex flex-col items-center">
           {/* Mailing List Form */}
@@ -28,12 +28,12 @@ export default function Footer() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Enter your email"
-                className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] text-sm transition-shadow"
+                className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary text-sm transition-shadow"
                 required
               />
               <button
                 type="submit"
-                className="px-6 py-2 text-white rounded-lg font-medium text-sm cursor-pointer bg-[var(--color-primary)] hover:bg-[var(--color-primary-hover)] transition-colors"
+                className="px-6 py-2 text-white rounded-lg font-medium text-sm cursor-pointer bg-primary hover:bg-primary-hover transition-colors"
               >
                 Subscribe
               </button>
@@ -43,19 +43,19 @@ export default function Footer() {
           {/* Social Media Icons */}
           <div className="flex gap-6 mb-4">
             <button
-              className="text-[var(--color-text-tertiary)] hover:text-[var(--color-primary)] transition-colors cursor-pointer"
+              className="text-text-tertiary hover:text-primary transition-colors cursor-pointer"
               aria-label="Instagram"
             >
               <Instagram size={24} />
             </button>
             <button
-              className="text-[var(--color-text-tertiary)] hover:text-[var(--color-primary)] transition-colors cursor-pointer"
+              className="text-text-tertiary hover:text-primary transition-colors cursor-pointer"
               aria-label="Email"
             >
               <Mail size={24} />
             </button>
             <button
-              className="text-[var(--color-text-tertiary)] hover:text-[var(--color-primary)] transition-colors cursor-pointer"
+              className="text-text-tertiary hover:text-primary transition-colors cursor-pointer"
               aria-label="YouTube"
             >
               <Youtube size={24} />

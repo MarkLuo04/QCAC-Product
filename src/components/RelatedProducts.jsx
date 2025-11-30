@@ -68,11 +68,11 @@ export default function RelatedProducts() {
                 />
               </div>
               <h3 
-                className="font-medium text-gray-900 text-sm mb-1 transition-colors hover:text-[var(--color-primary)]"
+                className="font-medium text-gray-900 text-sm mb-1 transition-colors hover:text-primary"
               >
                 {product.name}
               </h3>
-              <p className="font-semibold" style={{ color: 'var(--color-primary)' }}>
+              <p className="font-semibold text-primary">
                 ${product.price.toFixed(2)}
               </p>
             </div>

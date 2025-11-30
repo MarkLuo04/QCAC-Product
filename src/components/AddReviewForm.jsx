@@ -90,7 +90,7 @@ export default function AddReviewForm({ onAddReview, onCancel }) {
             value={formData.name}
             onChange={handleChange}
             placeholder="Your name"
-            className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] transition-shadow"
+            className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary transition-shadow"
             required
           />
         </div>
@@ -111,11 +111,7 @@ export default function AddReviewForm({ onAddReview, onCancel }) {
                 onMouseEnter={() => setHoverRating(star)}
                 className="text-3xl transition-colors focus:outline-none cursor-pointer"
               >
-                <span style={{
-                  color: star <= (hoverRating || formData.rating)
-                    ? 'var(--color-primary)'
-                    : '#D1D5DB'
-                }}>
+                <span className={star <= (hoverRating || formData.rating) ? 'text-primary' : 'text-gray-300'}>
                   ★
                 </span>
               </button>
@@ -135,7 +131,7 @@ export default function AddReviewForm({ onAddReview, onCancel }) {
           onChange={handleChange}
           rows={4}
           placeholder="Share your experience with this product..."
-          className="w-full px-4 py-2.5 border border-gray-300 rounded-xl resize-none focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] transition-shadow"
+          className="w-full px-4 py-2.5 border border-gray-300 rounded-xl resize-none focus:outline-none focus:ring-2 focus:ring-primary transition-shadow"
           required
         />
       </div>
@@ -171,7 +167,7 @@ export default function AddReviewForm({ onAddReview, onCancel }) {
         {/* Upload Button */}
         {formData.images.length < IMAGE_UPLOAD.MAX_COUNT && (
           <label 
-            className="inline-flex items-center gap-2 px-4 py-2.5 border-2 border-dashed border-gray-300 rounded-xl cursor-pointer text-gray-600 hover:border-[var(--color-primary)] hover:bg-[var(--color-primary-bg)] hover:text-[var(--color-primary)] transition-all"
+            className="inline-flex items-center gap-2 px-4 py-2.5 border-2 border-dashed border-gray-300 rounded-xl cursor-pointer text-gray-600 hover:border-primary hover:bg-primary-bg hover:text-primary transition-all"
           >
             <Upload size={18} />
             <span className="text-sm font-medium">Upload Photos</span>
@@ -192,7 +188,7 @@ export default function AddReviewForm({ onAddReview, onCancel }) {
       <div className="flex gap-3 pt-2">
         <button 
           type="submit" 
-          className="px-6 py-2.5 text-white rounded-xl font-medium shadow-sm hover:shadow-md cursor-pointer bg-[var(--color-primary)] hover:bg-[var(--color-primary-hover)] transition-all"
+          className="px-6 py-2.5 text-white rounded-xl font-medium shadow-sm hover:shadow-md cursor-pointer bg-primary hover:bg-primary-hover transition-all"
         >
           Submit Review
         </button>

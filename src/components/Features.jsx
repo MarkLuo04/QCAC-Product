@@ -15,7 +15,7 @@ export default function Features() {
       <ul className="space-y-3 text-gray-700">
         {features.map((feature, index) => (
           <li key={index} className="flex items-start">
-            <span className="mr-3" style={{ color: 'var(--color-primary)' }}>•</span>
+            <span className="mr-3 text-primary">•</span>
             <span>{feature}</span>
           </li>
         ))}

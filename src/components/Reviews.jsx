@@ -109,7 +109,7 @@ export default function Reviews({ reviews, onAddReview }) {
       
       if (fillPercentage === 1) {
         // Full star
-        return <span key={i} style={{ color: 'var(--color-primary)' }}>★</span>;
+        return <span key={i} className="text-primary">★</span>;
       } else if (fillPercentage === 0) {
         // Empty star
         return <span key={i} className="text-gray-300">★</span>;
@@ -119,8 +119,8 @@ export default function Reviews({ reviews, onAddReview }) {
           <span key={i} className="relative inline-block">
             <span className="text-gray-300">★</span>
             <span 
-              className="absolute top-0 left-0 overflow-hidden"
-              style={{ width: `${fillPercentage * 100}%`, color: 'var(--color-primary)' }}
+              className="absolute top-0 left-0 overflow-hidden text-primary"
+              style={{ width: `${fillPercentage * 100}%` }}
             >
               ★
             </span>
@@ -177,13 +177,12 @@ export default function Reviews({ reviews, onAddReview }) {
                   <div key={star} className="flex items-center gap-3 mb-2">
                     <span className="text-sm font-medium text-gray-700 w-12">{star} star</span>
                     <div className="flex-1 h-5 bg-gray-200 rounded-full overflow-hidden">
-                      <div 
-                        className="h-full"
-                        style={{ 
-                          backgroundColor: 'var(--color-primary)',
-                          width: `${reviews.length > 0 ? (ratingCounts[star - 1] / reviews.length) * 100 : 0}%`
-                        }}
-                      />
+                <div 
+                  className="h-full bg-primary"
+                  style={{ 
+                    width: `${reviews.length > 0 ? (ratingCounts[star - 1] / reviews.length) * 100 : 0}%` 
+                  }}
+                />
                     </div>
                     <span className="text-sm text-gray-600 w-8">{ratingCounts[star - 1]}</span>
                   </div>
@@ -197,7 +196,7 @@ export default function Reviews({ reviews, onAddReview }) {
             {!isFormVisible ? (
               <button
                 onClick={() => setIsFormVisible(true)}
-                className="px-6 py-3 border-2 border-[var(--color-primary)] text-[var(--color-primary)] rounded-xl font-medium cursor-pointer hover:bg-[var(--color-primary-bg)] transition-colors"
+                className="px-6 py-3 border-2 border-primary text-primary rounded-xl font-medium cursor-pointer hover:bg-primary-bg transition-colors"
               >
                 Write a Review
               </button>
@@ -217,13 +216,13 @@ export default function Reviews({ reviews, onAddReview }) {
             {reviews.map((review, index) => (
               <div key={index} className="p-6 border border-gray-100 rounded-2xl bg-white">
                 <div className="flex items-start gap-3 mb-2">
-                  <div className="w-10 h-10 rounded-full flex items-center justify-center font-semibold" style={{ backgroundColor: 'var(--color-primary-light)', color: 'var(--color-primary-hover)' }}>
+                  <div className="w-10 h-10 rounded-full flex items-center justify-center font-semibold bg-primary-light text-primary-hover">
                     {review.name.charAt(0).toUpperCase()}
                   </div>
                   <div className="flex-1">
                     <div className="font-semibold text-gray-900">{review.name}</div>
                     <div className="flex items-center gap-2 mt-1">
-                      <div className="flex text-sm" style={{ color: 'var(--color-primary)' }}>{renderStars(review.rating)}</div>
+                      <div className="flex text-sm text-primary">{renderStars(review.rating)}</div>
                       <span className="text-sm text-gray-600">
                         {new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
                       </span>
@@ -250,10 +249,11 @@ export default function Reviews({ reviews, onAddReview }) {
                 <button 
                   onClick={() => handleHelpfulClick(index)}
                   disabled={helpfulData.clicked[index]}
-                  className="mt-3 flex items-center gap-2 text-sm cursor-pointer"
-                  style={{ color: helpfulData.clicked[index] ? 'var(--color-primary)' : 'var(--color-text-secondary)' }}
-                  onMouseEnter={(e) => !helpfulData.clicked[index] && (e.currentTarget.style.color = 'var(--color-primary)')}
-                  onMouseLeave={(e) => !helpfulData.clicked[index] && (e.currentTarget.style.color = 'var(--color-text-secondary)')}
+                  className={`mt-3 flex items-center gap-2 text-sm cursor-pointer transition-colors ${
+                    helpfulData.clicked[index] 
+                      ? 'text-primary' 
+                      : 'text-text-secondary hover:text-primary'
+                  }`}
                 >
                   <ThumbsUp size={16} />
                   <span>Helpful ({helpfulData.counts[index] || 0})</span>

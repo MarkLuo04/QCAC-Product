@@ -1,32 +1,33 @@
 @import "tailwindcss";
 
-:root {
-  /* Header Colors */
+@theme {
+  /* Define custom colors */
   --color-header: #4FD4D6;
-  --color-header-border: #3FC0C2;
+  --color-header-hover: #3FC0C2;
   
-  /* Primary Theme Colors */
   --color-primary: #1C8080;
   --color-primary-hover: #4A9A94;
   --color-primary-light: #A8D5D2;
   --color-primary-bg: #E8F4F3;
   
-  /* Text Colors */
   --color-text-primary: #111827;
   --color-text-secondary: #4B5563;
   --color-text-tertiary: #6B7280;
   
-  /* Border Colors */
   --color-border: #D1D5DB;
   --color-border-light: #E5E7EB;
+  
+  /* Define custom font families */
+  --font-family-display: "Quicksand", sans-serif;
+  --font-family-body: "Nunito", sans-serif;
 }
 
 body {
-  font-family: 'Nunito', sans-serif;
+  font-family: var(--font-family-body);
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Quicksand', sans-serif;
+  font-family: var(--font-family-display);
 }
 
 @keyframes slideDown {
