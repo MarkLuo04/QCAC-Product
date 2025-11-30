@@ -16,7 +16,16 @@ export default function Reviews({ reviews, onAddReview }) {
       const stored = localStorage.getItem(HELPFUL_STORAGE_KEY);
       if (stored) {
         const parsed = JSON.parse(stored);
-        setHelpfulData(parsed);
+        // Ensure the stored data matches current reviews length
+        if (parsed.counts.length === reviews.length && parsed.clicked.length === reviews.length) {
+          setHelpfulData(parsed);
+        } else {
+          // Reinitialize if lengths don't match
+          setHelpfulData({
+            counts: reviews.map(() => 0),
+            clicked: reviews.map(() => false)
+          });
+        }
       } else {
         setHelpfulData({
           counts: reviews.map(() => 0),
@@ -29,7 +38,7 @@ export default function Reviews({ reviews, onAddReview }) {
         clicked: reviews.map(() => false)
       });
     }
-  }, [reviews.length]);
+  }, [reviews]);
 
   // Save helpful data to localStorage
   const saveHelpfulData = (data) => {
@@ -163,16 +172,16 @@ export default function Reviews({ reviews, onAddReview }) {
         <>
           {/* Rating Summary */}
           <div className="mb-10">
-            <div className="flex items-start gap-8">
+            <div className="flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-8">
               {/* Average Rating */}
               <div className="text-center">
                 <div className="text-5xl font-bold text-gray-900 mb-2">{averageRating}</div>
-                <div className="flex text-xl mb-1">{renderStars(parseFloat(averageRating))}</div>
+                <div className="flex text-xl mb-1 justify-center">{renderStars(parseFloat(averageRating))}</div>
                 <div className="text-sm text-gray-600">{reviews.length} {reviews.length === 1 ? 'review' : 'reviews'}</div>
               </div>
 
               {/* Rating Breakdown */}
-              <div className="flex-1">
+              <div className="flex-1 w-full md:w-auto">
                 {[RATING.MAX, 4, 3, 2, RATING.MIN].map(star => (
                   <div key={star} className="flex items-center gap-3 mb-2">
                     <span className="text-sm font-medium text-gray-700 w-12">{star} star</span>
@@ -221,10 +230,10 @@ export default function Reviews({ reviews, onAddReview }) {
                   </div>
                   <div className="flex-1">
                     <div className="font-semibold text-gray-900">{review.name}</div>
-                    <div className="flex items-center gap-2 mt-1">
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2 mt-1">
                       <div className="flex text-sm text-primary">{renderStars(review.rating)}</div>
                       <span className="text-sm text-gray-600">
-                        {new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
+                        {new Date(review.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
                       </span>
                     </div>
                   </div>
