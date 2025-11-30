@@ -1,6 +1,8 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import ImageGallery from './ImageGallery.jsx';
 import ProductInfo from './ProductInfo.jsx';
+import { ANIMATIONS } from '../utils/constants.js';
 import warmImage from '../images/glass_cup_warm.webp';
 import coldImage from '../images/glass_cup_cold.webp';
 import linkoImage from '../images/linko_pfp.png';
@@ -21,12 +23,44 @@ export default function ProductSection() {
     { src: coldImage, alt: 'Glass cup cold', label: 'Cold' },
   ];
 
+  // Staggered container animation
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: ANIMATIONS.STAGGERS.medium,
+        delayChildren: 0.2,
+        ...ANIMATIONS.TRANSITIONS.easeOut
+      }
+    }
+  };
+
+  // Individual item entrance
+  const itemVariants = {
+    hidden: ANIMATIONS.VARIANTS.fadeUp.initial,
+    visible: {
+      ...ANIMATIONS.VARIANTS.fadeUp.animate,
+      transition: ANIMATIONS.TRANSITIONS.gentleSpring
+    }
+  };
+
   return (
-    <section className="max-w-6xl mx-auto px-8 py-16">
+    <motion.section
+      className="max-w-6xl mx-auto px-8 py-16"
+      variants={containerVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={ANIMATIONS.VIEWPORT}
+    >
       <div className="grid md:grid-cols-[1.15fr_1fr] gap-12 items-start">
-        <ImageGallery images={images} />
-        <ProductInfo product={product} />
+        <motion.div variants={itemVariants}>
+          <ImageGallery images={images} />
+        </motion.div>
+        <motion.div variants={itemVariants}>
+          <ProductInfo product={product} />
+        </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 }

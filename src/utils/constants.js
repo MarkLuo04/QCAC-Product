@@ -29,3 +29,65 @@ export const VALIDATION = {
   MAX_IMAGE_SIZE: 2 * 1024 * 1024
 };
 
+// Animation Configurations
+export const ANIMATIONS = {
+  TRANSITIONS: {
+    spring: { // Responsive spring animation
+      type: "spring",
+      stiffness: 120,
+      damping: 20,
+      mass: 1
+    },
+    gentleSpring: { // Subtle spring for content
+      type: "spring",
+      stiffness: 150,
+      damping: 25,
+      mass: 0.8
+    },
+    easeOut: {
+      type: "tween",
+      ease: "easeOut",
+      duration: 0.4
+    },
+    easeInOut: {
+      type: "tween",
+      ease: "easeInOut",
+      duration: 0.3
+    }
+  },
+
+  VARIANTS: {
+    fadeUp: {
+      initial: { opacity: 0, y: 15 },
+      animate: { opacity: 1, y: 0 }
+    },
+    fadeDown: {
+      initial: { opacity: 0, y: -12 },
+      animate: { opacity: 1, y: 0 }
+    },
+    scaleIn: {
+      initial: { opacity: 0, scale: 0.92 },
+      animate: { opacity: 1, scale: 1 }
+    },
+    slideLeft: {
+      initial: { opacity: 0, x: -18 },
+      animate: { opacity: 1, x: 0 }
+    },
+    slideRight: {
+      initial: { opacity: 0, x: 18 },
+      animate: { opacity: 1, x: 0 }
+    }
+  },
+
+  STAGGERS: {
+    fast: 0.06,
+    medium: 0.08,
+    slow: 0.12
+  },
+
+  VIEWPORT: {
+    once: true,
+    margin: "-80px"
+  }
+};
+
