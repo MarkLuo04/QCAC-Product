@@ -1,15 +1,12 @@
 import React, { useState } from 'react';
 
 export default function ProductInfo({ product }) {
-  // Quantity state management
   const [quantity, setQuantity] = useState(1);
 
-  // Decrease quantity 
   const decreaseQuantity = () => {
     if (quantity > 1) setQuantity(quantity - 1);
   };
 
-  // Increase quantity
   const increaseQuantity = () => {
     setQuantity(quantity + 1);
   };
@@ -39,30 +36,14 @@ export default function ProductInfo({ product }) {
         <div className="flex items-center gap-3 w-32">
           <button
             onClick={decreaseQuantity}
-            className="w-10 h-10 flex items-center justify-center border-2 border-gray-300 rounded-lg cursor-pointer"
-            onMouseEnter={(e) => {
-              e.currentTarget.style.borderColor = 'var(--color-primary)';
-              e.currentTarget.style.color = 'var(--color-primary)';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.borderColor = '#D1D5DB';
-              e.currentTarget.style.color = 'inherit';
-            }} 
+            className="w-10 h-10 flex items-center justify-center border-2 border-gray-300 rounded-lg cursor-pointer hover:border-[var(--color-primary)] hover:text-[var(--color-primary)] transition-all"
           >
             −
           </button>
           <span className="flex-1 text-center font-medium text-lg">{quantity}</span>
           <button
             onClick={increaseQuantity}
-            className="w-10 h-10 flex items-center justify-center border-2 border-gray-300 rounded-lg cursor-pointer"
-            onMouseEnter={(e) => {
-              e.currentTarget.style.borderColor = 'var(--color-primary)';
-              e.currentTarget.style.color = 'var(--color-primary)';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.borderColor = '#D1D5DB';
-              e.currentTarget.style.color = 'inherit';
-            }}
+            className="w-10 h-10 flex items-center justify-center border-2 border-gray-300 rounded-lg cursor-pointer hover:border-[var(--color-primary)] hover:text-[var(--color-primary)] transition-all"
           >
             +
           </button>
@@ -72,18 +53,12 @@ export default function ProductInfo({ product }) {
       {/* Action buttons */}
       <div className="flex gap-3 pt-2">
         <button 
-          className="flex-1 text-white py-3 px-6 rounded-lg font-medium cursor-pointer"
-          style={{ backgroundColor: 'var(--color-primary)' }}
-          onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--color-primary-hover)'}
-          onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--color-primary)'}
+          className="flex-1 text-white py-3 px-6 rounded-lg font-medium cursor-pointer bg-[var(--color-primary)] hover:bg-[var(--color-primary-hover)] transition-colors"
         >
           Add to Cart
         </button>
         <button 
-          className="flex-1 bg-white py-3 px-6 rounded-lg font-medium cursor-pointer border-2"
-          style={{ borderColor: 'var(--color-primary)', color: 'var(--color-primary)' }}
-          onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--color-primary-bg)'}
-          onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'white'}
+          className="flex-1 bg-white py-3 px-6 rounded-lg font-medium cursor-pointer border-2 border-[var(--color-primary)] text-[var(--color-primary)] hover:bg-[var(--color-primary-bg)] transition-colors"
         >
           Buy Now
         </button>

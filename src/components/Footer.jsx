@@ -28,17 +28,12 @@ export default function Footer() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Enter your email"
-                className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-transparent text-sm"
-                onFocus={(e) => e.currentTarget.style.boxShadow = '0 0 0 2px var(--color-primary)'}
-                onBlur={(e) => e.currentTarget.style.boxShadow = 'none'}
+                className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] text-sm transition-shadow"
                 required
               />
               <button
                 type="submit"
-                className="px-6 py-2 text-white rounded-lg transition-colors font-medium text-sm cursor-pointer"
-                style={{ backgroundColor: 'var(--color-primary)' }}
-                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--color-primary-hover)'}
-                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--color-primary)'}
+                className="px-6 py-2 text-white rounded-lg font-medium text-sm cursor-pointer bg-[var(--color-primary)] hover:bg-[var(--color-primary-hover)] transition-colors"
               >
                 Subscribe
               </button>
@@ -48,28 +43,19 @@ export default function Footer() {
           {/* Social Media Icons */}
           <div className="flex gap-6 mb-4">
             <button
-              className="text-gray-600 transition-colors cursor-pointer"
-              style={{ color: 'var(--color-text-tertiary)' }}
-              onMouseEnter={(e) => e.currentTarget.style.color = 'var(--color-primary)'}
-              onMouseLeave={(e) => e.currentTarget.style.color = 'var(--color-text-tertiary)'}
+              className="text-[var(--color-text-tertiary)] hover:text-[var(--color-primary)] transition-colors cursor-pointer"
               aria-label="Instagram"
             >
               <Instagram size={24} />
             </button>
             <button
-              className="text-gray-600 transition-colors cursor-pointer"
-              style={{ color: 'var(--color-text-tertiary)' }}
-              onMouseEnter={(e) => e.currentTarget.style.color = 'var(--color-primary)'}
-              onMouseLeave={(e) => e.currentTarget.style.color = 'var(--color-text-tertiary)'}
+              className="text-[var(--color-text-tertiary)] hover:text-[var(--color-primary)] transition-colors cursor-pointer"
               aria-label="Email"
             >
               <Mail size={24} />
             </button>
             <button
-              className="text-gray-600 transition-colors cursor-pointer"
-              style={{ color: 'var(--color-text-tertiary)' }}
-              onMouseEnter={(e) => e.currentTarget.style.color = 'var(--color-primary)'}
-              onMouseLeave={(e) => e.currentTarget.style.color = 'var(--color-text-tertiary)'}
+              className="text-[var(--color-text-tertiary)] hover:text-[var(--color-primary)] transition-colors cursor-pointer"
               aria-label="YouTube"
             >
               <Youtube size={24} />

@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { ThumbsUp, X } from 'lucide-react';
 import AddReviewForm from './AddReviewForm.jsx';
+import { RATING } from '../utils/constants.js';
 
 const HELPFUL_STORAGE_KEY = 'review_helpful_data';
 
 export default function Reviews({ reviews, onAddReview }) {
-  // Track helpful counts and clicked state for each review
   const [helpfulData, setHelpfulData] = useState({ counts: [], clicked: [] });
   const [isFormVisible, setIsFormVisible] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
@@ -104,7 +104,7 @@ export default function Reviews({ reviews, onAddReview }) {
 
   // Render star display
   const renderStars = (rating) => {
-    return [...Array(5)].map((_, i) => {
+    return [...Array(RATING.MAX)].map((_, i) => {
       const fillPercentage = Math.min(Math.max(rating - i, 0), 1);
       
       if (fillPercentage === 1) {
@@ -173,7 +173,7 @@ export default function Reviews({ reviews, onAddReview }) {
 
               {/* Rating Breakdown */}
               <div className="flex-1">
-                {[5, 4, 3, 2, 1].map(star => (
+                {[RATING.MAX, 4, 3, 2, RATING.MIN].map(star => (
                   <div key={star} className="flex items-center gap-3 mb-2">
                     <span className="text-sm font-medium text-gray-700 w-12">{star} star</span>
                     <div className="flex-1 h-5 bg-gray-200 rounded-full overflow-hidden">
@@ -197,10 +197,7 @@ export default function Reviews({ reviews, onAddReview }) {
             {!isFormVisible ? (
               <button
                 onClick={() => setIsFormVisible(true)}
-                className="px-6 py-3 border-2 rounded-xl transition-all font-medium cursor-pointer"
-                style={{ borderColor: 'var(--color-primary)', color: 'var(--color-primary)' }}
-                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--color-primary-bg)'}
-                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
+                className="px-6 py-3 border-2 border-[var(--color-primary)] text-[var(--color-primary)] rounded-xl font-medium cursor-pointer hover:bg-[var(--color-primary-bg)] transition-colors"
               >
                 Write a Review
               </button>

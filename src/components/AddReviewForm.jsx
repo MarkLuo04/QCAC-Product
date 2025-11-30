@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { X, Upload } from 'lucide-react';
+import { IMAGE_UPLOAD, RATING, MESSAGES } from '../utils/constants.js';
 
 export default function AddReviewForm({ onAddReview, onCancel }) {
   const [formData, setFormData] = useState({
     name: '',
-    rating: 5,
+    rating: RATING.DEFAULT,
     message: '',
     images: []
   });
@@ -28,16 +29,14 @@ export default function AddReviewForm({ onAddReview, onCancel }) {
   const handleImageUpload = (e) => {
     const files = Array.from(e.target.files);
     
-    // Limit to 2 images total
-    if (formData.images.length + files.length > 2) {
-      alert('You can upload a maximum of 2 images');
+    if (formData.images.length + files.length > IMAGE_UPLOAD.MAX_COUNT) {
+      alert(MESSAGES.IMAGE_LIMIT);
       return;
     }
 
     files.forEach(file => {
-      // Check file size 
-      if (file.size > 2 * 1024 * 1024) {
-        alert('Each image must be less than 2MB');
+      if (file.size > IMAGE_UPLOAD.MAX_SIZE_BYTES) {
+        alert(MESSAGES.IMAGE_SIZE);
         return;
       }
 
@@ -71,7 +70,7 @@ export default function AddReviewForm({ onAddReview, onCancel }) {
     // Reset form
     setFormData({
       name: '',
-      rating: 5,
+      rating: RATING.DEFAULT,
       message: '',
       images: []
     });
@@ -90,10 +89,8 @@ export default function AddReviewForm({ onAddReview, onCancel }) {
             name="name"
             value={formData.name}
             onChange={handleChange}
-            className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:outline-none focus:border-transparent transition-all"
-            onFocus={(e) => e.currentTarget.style.boxShadow = '0 0 0 2px var(--color-primary)'}
-            onBlur={(e) => e.currentTarget.style.boxShadow = 'none'}
             placeholder="Your name"
+            className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] transition-shadow"
             required
           />
         </div>
@@ -106,14 +103,14 @@ export default function AddReviewForm({ onAddReview, onCancel }) {
             className="flex gap-1"
             onMouseLeave={() => setHoverRating(0)}
           >
-            {[1, 2, 3, 4, 5].map((star) => (
+            {[...Array(RATING.MAX)].map((_, i) => i + 1).map((star) => (
               <button
                 key={star}
                 type="button"
                 onClick={() => handleStarClick(star)}
                 onMouseEnter={() => setHoverRating(star)}
                 className="text-3xl transition-colors focus:outline-none cursor-pointer"
-          >
+              >
                 <span style={{
                   color: star <= (hoverRating || formData.rating)
                     ? 'var(--color-primary)'
@@ -125,25 +122,23 @@ export default function AddReviewForm({ onAddReview, onCancel }) {
             ))}
           </div>
         </div>
-        </div>
+      </div>
 
-        <div>
+      <div>
         <label htmlFor="message" className="block mb-2 text-sm font-medium text-gray-700">
           Your Review
         </label>
-          <textarea
-            id="message"
-            name="message"
-            value={formData.message}
-            onChange={handleChange}
-          rows="4"
-            className="w-full px-4 py-2.5 border border-gray-300 rounded-xl resize-none focus:outline-none focus:border-transparent transition-all"
-            onFocus={(e) => e.currentTarget.style.boxShadow = '0 0 0 2px var(--color-primary)'}
-            onBlur={(e) => e.currentTarget.style.boxShadow = 'none'}
+        <textarea
+          id="message"
+          name="message"
+          value={formData.message}
+          onChange={handleChange}
+          rows={4}
           placeholder="Share your experience with this product..."
-            required
-          />
-        </div>
+          className="w-full px-4 py-2.5 border border-gray-300 rounded-xl resize-none focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] transition-shadow"
+          required
+        />
+      </div>
 
       {/* Image Upload */}
       <div>
@@ -174,23 +169,15 @@ export default function AddReviewForm({ onAddReview, onCancel }) {
         )}
 
         {/* Upload Button */}
-        {formData.images.length < 2 && (
-          <label className="inline-flex items-center gap-2 px-4 py-2.5 border-2 border-dashed border-gray-300 rounded-xl transition-all cursor-pointer text-gray-600"
-            onMouseEnter={(e) => {
-              e.currentTarget.style.borderColor = 'var(--color-primary)';
-              e.currentTarget.style.backgroundColor = 'var(--color-primary-bg)';
-              e.currentTarget.style.color = 'var(--color-primary)';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.borderColor = 'var(--color-border)';
-              e.currentTarget.style.backgroundColor = 'transparent';
-              e.currentTarget.style.color = 'var(--color-text-secondary)';
-            }}>
+        {formData.images.length < IMAGE_UPLOAD.MAX_COUNT && (
+          <label 
+            className="inline-flex items-center gap-2 px-4 py-2.5 border-2 border-dashed border-gray-300 rounded-xl cursor-pointer text-gray-600 hover:border-[var(--color-primary)] hover:bg-[var(--color-primary-bg)] hover:text-[var(--color-primary)] transition-all"
+          >
             <Upload size={18} />
             <span className="text-sm font-medium">Upload Photos</span>
             <input
               type="file"
-              accept="image/*"
+              accept={IMAGE_UPLOAD.ACCEPTED_TYPES}
               multiple
               onChange={handleImageUpload}
               className="hidden"
@@ -198,28 +185,25 @@ export default function AddReviewForm({ onAddReview, onCancel }) {
           </label>
         )}
         <p className="text-xs text-gray-500 mt-2">
-          Up to 2 photos, max 2MB each
+          Up to {IMAGE_UPLOAD.MAX_COUNT} photos, max {IMAGE_UPLOAD.MAX_SIZE_MB}MB each
         </p>
       </div>
 
       <div className="flex gap-3 pt-2">
         <button 
           type="submit" 
-          className="px-6 py-2.5 text-white rounded-xl transition-all font-medium shadow-sm hover:shadow-md cursor-pointer"
-          style={{ backgroundColor: 'var(--color-primary)' }}
-          onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--color-primary-hover)'}
-          onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--color-primary)'}
+          className="px-6 py-2.5 text-white rounded-xl font-medium shadow-sm hover:shadow-md cursor-pointer bg-[var(--color-primary)] hover:bg-[var(--color-primary-hover)] transition-all"
         >
           Submit Review
         </button>
         <button 
           type="button"
           onClick={onCancel}
-          className="px-6 py-2.5 text-gray-700 rounded-xl hover:bg-gray-100 transition-all font-medium cursor-pointer"
+          className="px-6 py-2.5 text-gray-700 rounded-xl hover:bg-gray-100 transition-colors font-medium cursor-pointer"
         >
           Cancel
         </button>
       </div>
-      </form>
+    </form>
   );
 }

@@ -67,9 +67,8 @@ export default function RelatedProducts() {
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
               </div>
-              <h3 className="font-medium text-gray-900 text-sm mb-1 transition-colors group-hover:transition-colors" 
-                onMouseEnter={(e) => e.currentTarget.style.color = 'var(--color-primary)'}
-                onMouseLeave={(e) => e.currentTarget.style.color = 'var(--color-text-primary)'}
+              <h3 
+                className="font-medium text-gray-900 text-sm mb-1 transition-colors hover:text-[var(--color-primary)]"
               >
                 {product.name}
               </h3>
