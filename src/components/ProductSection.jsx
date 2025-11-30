@@ -47,13 +47,13 @@ export default function ProductSection() {
 
   return (
     <motion.section
-      className="max-w-6xl mx-auto px-8 py-16"
+      className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16"
       variants={containerVariants}
       initial="hidden"
       whileInView="visible"
       viewport={ANIMATIONS.VIEWPORT}
     >
-      <div className="grid md:grid-cols-[1.15fr_1fr] gap-12 items-start">
+      <div className="grid lg:grid-cols-[1.15fr_1fr] gap-8 sm:gap-10 lg:gap-12 items-start">
         <motion.div variants={itemVariants}>
         <ImageGallery images={images} />
         </motion.div>

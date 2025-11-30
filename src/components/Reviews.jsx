@@ -200,17 +200,17 @@ export default function Reviews({ reviews, onAddReview }) {
       ) : (
         <>
           {/* Rating Summary */}
-          <div className="mb-10">
-            <div className="flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-8">
+          <div className="mb-8 sm:mb-10">
+            <div className="flex flex-col lg:flex-row items-center lg:items-start gap-6 lg:gap-8">
               {/* Average Rating */}
-              <div className="text-center">
-                <div className="text-5xl font-bold text-gray-900 mb-2">{averageRating}</div>
-                <div className="flex text-xl mb-1 justify-center">{renderStars(parseFloat(averageRating))}</div>
+              <div className="text-center flex-shrink-0">
+                <div className="text-4xl sm:text-5xl font-bold text-gray-900 mb-2">{averageRating}</div>
+                <div className="flex text-lg sm:text-xl mb-1 justify-center">{renderStars(parseFloat(averageRating))}</div>
                 <div className="text-sm text-gray-600">{reviews.length} {reviews.length === 1 ? 'review' : 'reviews'}</div>
               </div>
 
               {/* Rating Breakdown */}
-              <div className="flex-1 w-full md:w-auto">
+              <div className="flex-1 w-full lg:w-auto">
                 {[RATING.MAX, 4, 3, 2, RATING.MIN].map(star => (
                   <div key={star} className="flex items-center gap-3 mb-2">
                     <span className="text-sm font-medium text-gray-700 w-12">{star} star</span>
@@ -264,7 +264,7 @@ export default function Reviews({ reviews, onAddReview }) {
             {reviews.map((review, index) => (
               <motion.div
                 key={index}
-                className="p-6 border border-gray-100 rounded-2xl bg-white"
+                className="p-4 sm:p-6 border border-gray-100 rounded-2xl bg-white"
                 initial={ANIMATIONS.VARIANTS.fadeUp.initial}
                 whileInView={ANIMATIONS.VARIANTS.fadeUp.animate}
                 viewport={ANIMATIONS.VIEWPORT}

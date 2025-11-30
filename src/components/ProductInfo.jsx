@@ -52,7 +52,7 @@ export default function ProductInfo({ product }) {
           {product.brand}
         </motion.p>
         <motion.h1
-          className="text-3xl md:text-4xl font-bold text-gray-900 mb-3"
+          className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-3"
           variants={itemVariants}
         >
           {product.name}

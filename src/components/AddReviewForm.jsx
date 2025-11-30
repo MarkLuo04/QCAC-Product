@@ -78,7 +78,7 @@ export default function AddReviewForm({ onAddReview, onCancel }) {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4 animate-slideDown">
-      <div className="grid md:grid-cols-2 gap-4">
+      <div className="grid sm:grid-cols-2 gap-4">
         <div>
           <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-700">
             Name

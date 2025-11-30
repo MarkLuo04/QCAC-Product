@@ -74,7 +74,7 @@ export default function RelatedProducts() {
 
   return (
     <motion.section
-      className="max-w-6xl mx-auto px-8 py-12"
+      className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10 lg:py-12"
       initial={ANIMATIONS.VARIANTS.fadeUp.initial}
       whileInView={ANIMATIONS.VARIANTS.fadeUp.animate}
       viewport={ANIMATIONS.VIEWPORT}

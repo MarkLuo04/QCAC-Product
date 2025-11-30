@@ -15,14 +15,14 @@ export default function Footer() {
 
   return (
     <footer className="border-t border-primary-light bg-primary-bg">
-      <div className="max-w-6xl mx-auto px-8 py-10">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-10">
         <div className="flex flex-col items-center">
           {/* Mailing List Form */}
-          <div className="w-full max-w-md mb-6">
+          <div className="w-full max-w-md mb-4 sm:mb-6">
             <h3 className="text-center text-sm font-medium text-gray-700 mb-3">
               Join the mailing list!
             </h3>
-            <form onSubmit={handleSubmit} className="flex gap-2">
+            <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-2">
               <input
                 type="email"
                 value={email}

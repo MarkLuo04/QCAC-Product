@@ -27,7 +27,7 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 border-b shadow-sm bg-header border-header-hover">
-      <div className="relative max-w-6xl mx-auto px-4 sm:px-8 flex items-center justify-between h-20 sm:h-[100px]">
+      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16 sm:h-20 lg:h-[100px]">
         {/* Mobile Menu Button */}
         <motion.button
           initial={{ opacity: 0, scale: 0.8 }}
@@ -116,7 +116,7 @@ export default function Header() {
 
       {/* Mobile Menu Dropdown */}
       <AnimatePresence>
-      {isMobileMenuOpen && (
+        {isMobileMenuOpen && (
           <motion.div
             className="lg:hidden border-t border-header-hover bg-header overflow-hidden"
             initial={{ height: 0, opacity: 0 }}
@@ -124,8 +124,8 @@ export default function Header() {
             exit={{ height: 0, opacity: 0 }}
             transition={ANIMATIONS.TRANSITIONS.easeOut}
           >
-          <motion.div
-            className="max-w-6xl mx-auto px-4 py-4 flex flex-col gap-4"
+            <motion.div
+              className="max-w-6xl mx-auto px-4 sm:px-6 py-4 flex flex-col gap-4"
             initial="hidden"
             animate="visible"
             transition={{ staggerChildren: 0.1 }}
