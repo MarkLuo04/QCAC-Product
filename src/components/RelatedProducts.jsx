@@ -67,10 +67,13 @@ export default function RelatedProducts() {
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
               </div>
-              <h3 className="font-medium text-gray-900 text-sm mb-1 group-hover:text-teal-600 transition-colors">
+              <h3 className="font-medium text-gray-900 text-sm mb-1 transition-colors group-hover:transition-colors" 
+                onMouseEnter={(e) => e.currentTarget.style.color = 'var(--color-primary)'}
+                onMouseLeave={(e) => e.currentTarget.style.color = 'var(--color-text-primary)'}
+              >
                 {product.name}
               </h3>
-              <p className="text-teal-600 font-semibold">
+              <p className="font-semibold" style={{ color: 'var(--color-primary)' }}>
                 ${product.price.toFixed(2)}
               </p>
             </div>

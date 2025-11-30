@@ -109,7 +109,7 @@ export default function Reviews({ reviews, onAddReview }) {
       
       if (fillPercentage === 1) {
         // Full star
-        return <span key={i} className="text-teal-600">★</span>;
+        return <span key={i} style={{ color: 'var(--color-primary)' }}>★</span>;
       } else if (fillPercentage === 0) {
         // Empty star
         return <span key={i} className="text-gray-300">★</span>;
@@ -119,8 +119,8 @@ export default function Reviews({ reviews, onAddReview }) {
           <span key={i} className="relative inline-block">
             <span className="text-gray-300">★</span>
             <span 
-              className="absolute top-0 left-0 text-teal-600 overflow-hidden"
-              style={{ width: `${fillPercentage * 100}%` }}
+              className="absolute top-0 left-0 overflow-hidden"
+              style={{ width: `${fillPercentage * 100}%`, color: 'var(--color-primary)' }}
             >
               ★
             </span>
@@ -178,7 +178,8 @@ export default function Reviews({ reviews, onAddReview }) {
                     <span className="text-sm font-medium text-gray-700 w-12">{star} star</span>
                     <div className="flex-1 h-5 bg-gray-200 rounded-full overflow-hidden">
                       <div 
-                        className="h-full bg-teal-600" 
+                        className="h-full"
+                        style={{ backgroundColor: 'var(--color-primary)' }} 
                         style={{ width: `${reviews.length > 0 ? (ratingCounts[star - 1] / reviews.length) * 100 : 0}%` }}
                       />
                     </div>
@@ -194,7 +195,10 @@ export default function Reviews({ reviews, onAddReview }) {
             {!isFormVisible ? (
               <button
                 onClick={() => setIsFormVisible(true)}
-                className="px-6 py-3 border-2 border-teal-600 text-teal-600 rounded-xl hover:bg-teal-50 transition-all font-medium cursor-pointer"
+                className="px-6 py-3 border-2 rounded-xl transition-all font-medium cursor-pointer"
+                style={{ borderColor: 'var(--color-primary)', color: 'var(--color-primary)' }}
+                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--color-primary-bg)'}
+                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
               >
                 Write a Review
               </button>
@@ -214,13 +218,13 @@ export default function Reviews({ reviews, onAddReview }) {
             {reviews.map((review, index) => (
               <div key={index} className="p-6 border border-gray-100 rounded-2xl bg-white">
                 <div className="flex items-start gap-3 mb-2">
-                  <div className="w-10 h-10 rounded-full bg-teal-100 flex items-center justify-center font-semibold text-teal-700">
+                  <div className="w-10 h-10 rounded-full flex items-center justify-center font-semibold" style={{ backgroundColor: 'var(--color-primary-light)', color: 'var(--color-primary-hover)' }}>
                     {review.name.charAt(0).toUpperCase()}
                   </div>
                   <div className="flex-1">
                     <div className="font-semibold text-gray-900">{review.name}</div>
                     <div className="flex items-center gap-2 mt-1">
-                      <div className="flex text-sm">{renderStars(review.rating)}</div>
+                      <div className="flex text-sm" style={{ color: 'var(--color-primary)' }}>{renderStars(review.rating)}</div>
                       <span className="text-sm text-gray-600">
                         {new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
                       </span>
@@ -247,11 +251,10 @@ export default function Reviews({ reviews, onAddReview }) {
                 <button 
                   onClick={() => handleHelpfulClick(index)}
                   disabled={helpfulData.clicked[index]}
-                  className={`mt-3 flex items-center gap-2 text-sm cursor-pointer ${
-                    helpfulData.clicked[index] 
-                      ? 'text-teal-600' 
-                      : 'text-gray-600 hover:text-teal-600'
-                  }`}
+                  className="mt-3 flex items-center gap-2 text-sm cursor-pointer"
+                  style={{ color: helpfulData.clicked[index] ? 'var(--color-primary)' : 'var(--color-text-secondary)' }}
+                  onMouseEnter={(e) => !helpfulData.clicked[index] && (e.currentTarget.style.color = 'var(--color-primary)')}
+                  onMouseLeave={(e) => !helpfulData.clicked[index] && (e.currentTarget.style.color = 'var(--color-text-secondary)')}
                 >
                   <ThumbsUp size={16} />
                   <span>Helpful ({helpfulData.counts[index] || 0})</span>

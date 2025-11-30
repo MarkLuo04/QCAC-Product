@@ -90,7 +90,9 @@ export default function AddReviewForm({ onAddReview, onCancel }) {
             name="name"
             value={formData.name}
             onChange={handleChange}
-            className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all"
+            className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:outline-none focus:border-transparent transition-all"
+            onFocus={(e) => e.currentTarget.style.boxShadow = '0 0 0 2px var(--color-primary)'}
+            onBlur={(e) => e.currentTarget.style.boxShadow = 'none'}
             placeholder="Your name"
             required
           />
@@ -112,11 +114,11 @@ export default function AddReviewForm({ onAddReview, onCancel }) {
                 onMouseEnter={() => setHoverRating(star)}
                 className="text-3xl transition-colors focus:outline-none cursor-pointer"
           >
-                <span className={
-                  star <= (hoverRating || formData.rating)
-                    ? 'text-teal-600'
-                    : 'text-gray-300'
-                }>
+                <span style={{
+                  color: star <= (hoverRating || formData.rating)
+                    ? 'var(--color-primary)'
+                    : '#D1D5DB'
+                }}>
                   ★
                 </span>
               </button>
@@ -135,7 +137,9 @@ export default function AddReviewForm({ onAddReview, onCancel }) {
             value={formData.message}
             onChange={handleChange}
           rows="4"
-          className="w-full px-4 py-2.5 border border-gray-300 rounded-xl resize-none focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent transition-all"
+            className="w-full px-4 py-2.5 border border-gray-300 rounded-xl resize-none focus:outline-none focus:border-transparent transition-all"
+            onFocus={(e) => e.currentTarget.style.boxShadow = '0 0 0 2px var(--color-primary)'}
+            onBlur={(e) => e.currentTarget.style.boxShadow = 'none'}
           placeholder="Share your experience with this product..."
             required
           />
@@ -171,7 +175,17 @@ export default function AddReviewForm({ onAddReview, onCancel }) {
 
         {/* Upload Button */}
         {formData.images.length < 2 && (
-          <label className="inline-flex items-center gap-2 px-4 py-2.5 border-2 border-dashed border-gray-300 rounded-xl hover:border-teal-500 hover:bg-teal-50 transition-all cursor-pointer text-gray-600 hover:text-teal-600">
+          <label className="inline-flex items-center gap-2 px-4 py-2.5 border-2 border-dashed border-gray-300 rounded-xl transition-all cursor-pointer text-gray-600"
+            onMouseEnter={(e) => {
+              e.currentTarget.style.borderColor = 'var(--color-primary)';
+              e.currentTarget.style.backgroundColor = 'var(--color-primary-bg)';
+              e.currentTarget.style.color = 'var(--color-primary)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.borderColor = 'var(--color-border)';
+              e.currentTarget.style.backgroundColor = 'transparent';
+              e.currentTarget.style.color = 'var(--color-text-secondary)';
+            }}>
             <Upload size={18} />
             <span className="text-sm font-medium">Upload Photos</span>
             <input
@@ -191,7 +205,10 @@ export default function AddReviewForm({ onAddReview, onCancel }) {
       <div className="flex gap-3 pt-2">
         <button 
           type="submit" 
-          className="px-6 py-2.5 bg-teal-600 text-white rounded-xl hover:bg-teal-700 transition-all font-medium shadow-sm hover:shadow-md cursor-pointer"
+          className="px-6 py-2.5 text-white rounded-xl transition-all font-medium shadow-sm hover:shadow-md cursor-pointer"
+          style={{ backgroundColor: 'var(--color-primary)' }}
+          onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--color-primary-hover)'}
+          onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--color-primary)'}
         >
           Submit Review
         </button>

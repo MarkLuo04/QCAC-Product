@@ -19,9 +19,10 @@ export default function ImageGallery({ images }) {
           <button
             key={index}
             onClick={() => setCurrentImageIndex(index)}
-            className={`w-16 h-16 bg-teal-50 rounded border-2 ${
-              currentImageIndex === index ? 'border-teal-600' : 'border-transparent'
-            } overflow-hidden cursor-pointer`}
+            className="w-16 h-16 rounded border-2 overflow-hidden cursor-pointer"
+            style={{
+              borderColor: currentImageIndex === index ? 'var(--color-primary)' : 'transparent'
+            }}
           >
             <img src={image.src} alt={image.alt} className="w-full h-full object-cover" />
           </button>
@@ -29,7 +30,7 @@ export default function ImageGallery({ images }) {
       </div>
 
       {/* Main Image */}
-      <div className="relative flex-1 bg-teal-50 rounded-lg p-8 group">
+      <div className="relative flex-1 rounded-lg p-8 group" style={{ backgroundColor: 'var(--color-primary-bg)' }}>
         <img 
           src={images[currentImageIndex].src} 
           alt={images[currentImageIndex].alt} 

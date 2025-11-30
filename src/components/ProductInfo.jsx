@@ -18,11 +18,11 @@ export default function ProductInfo({ product }) {
     <div className="space-y-6">
       {/* Product name and price */}
       <div>
-        <p className="text-sm text-teal-600 mb-2">{product.brand}</p>
+        <p className="text-sm mb-2" style={{ color: 'var(--color-primary)' }}>{product.brand}</p>
         <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
           {product.name}
         </h1>
-        <p className="text-2xl font-semibold text-teal-600">${product.price.toFixed(2)}</p>
+        <p className="text-2xl font-semibold" style={{ color: 'var(--color-primary)' }}>${product.price.toFixed(2)}</p>
       </div>
 
       {/* Product description */}
@@ -39,14 +39,30 @@ export default function ProductInfo({ product }) {
         <div className="flex items-center gap-3 w-32">
           <button
             onClick={decreaseQuantity}
-            className="w-10 h-10 flex items-center justify-center border-2 border-gray-300 rounded-lg hover:border-teal-600 hover:text-teal-600 cursor-pointer" 
+            className="w-10 h-10 flex items-center justify-center border-2 border-gray-300 rounded-lg cursor-pointer"
+            onMouseEnter={(e) => {
+              e.currentTarget.style.borderColor = 'var(--color-primary)';
+              e.currentTarget.style.color = 'var(--color-primary)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.borderColor = '#D1D5DB';
+              e.currentTarget.style.color = 'inherit';
+            }} 
           >
             −
           </button>
           <span className="flex-1 text-center font-medium text-lg">{quantity}</span>
           <button
             onClick={increaseQuantity}
-            className="w-10 h-10 flex items-center justify-center border-2 border-gray-300 rounded-lg hover:border-teal-600 hover:text-teal-600 cursor-pointer"
+            className="w-10 h-10 flex items-center justify-center border-2 border-gray-300 rounded-lg cursor-pointer"
+            onMouseEnter={(e) => {
+              e.currentTarget.style.borderColor = 'var(--color-primary)';
+              e.currentTarget.style.color = 'var(--color-primary)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.borderColor = '#D1D5DB';
+              e.currentTarget.style.color = 'inherit';
+            }}
           >
             +
           </button>
@@ -55,10 +71,20 @@ export default function ProductInfo({ product }) {
 
       {/* Action buttons */}
       <div className="flex gap-3 pt-2">
-        <button className="flex-1 bg-teal-600 text-white py-3 px-6 rounded-lg font-medium hover:bg-teal-700 cursor-pointer">
+        <button 
+          className="flex-1 text-white py-3 px-6 rounded-lg font-medium cursor-pointer"
+          style={{ backgroundColor: 'var(--color-primary)' }}
+          onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--color-primary-hover)'}
+          onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--color-primary)'}
+        >
           Add to Cart
         </button>
-        <button className="flex-1 bg-white text-teal-600 border-2 border-teal-600 py-3 px-6 rounded-lg font-medium hover:bg-teal-50 cursor-pointer">
+        <button 
+          className="flex-1 bg-white py-3 px-6 rounded-lg font-medium cursor-pointer border-2"
+          style={{ borderColor: 'var(--color-primary)', color: 'var(--color-primary)' }}
+          onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--color-primary-bg)'}
+          onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'white'}
+        >
           Buy Now
         </button>
       </div>

@@ -1,5 +1,26 @@
 @import "tailwindcss";
 
+:root {
+  /* Header Colors */
+  --color-header: #4FD4D6;
+  --color-header-border: #3FC0C2;
+  
+  /* Primary Theme Colors */
+  --color-primary: #1C8080;
+  --color-primary-hover: #4A9A94;
+  --color-primary-light: #A8D5D2;
+  --color-primary-bg: #E8F4F3;
+  
+  /* Text Colors */
+  --color-text-primary: #111827;
+  --color-text-secondary: #4B5563;
+  --color-text-tertiary: #6B7280;
+  
+  /* Border Colors */
+  --color-border: #D1D5DB;
+  --color-border-light: #E5E7EB;
+}
+
 body {
   font-family: 'Nunito', sans-serif;
 }
