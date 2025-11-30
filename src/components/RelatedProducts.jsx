@@ -105,13 +105,23 @@ export default function RelatedProducts() {
               className="cursor-pointer flex-shrink-0 w-64"
               variants={itemVariants}
             >
-              <div className="aspect-square bg-gray-100 rounded-lg overflow-hidden mb-3 border border-gray-200">
-                <img
+              <motion.div
+                className="aspect-square bg-gray-100 rounded-lg overflow-hidden mb-3 border border-gray-200 shadow-sm"
+                whileHover={{
+                  boxShadow: "0 8px 20px -4px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
+                  transition: { duration: 0.2, ease: "easeOut" }
+                }}
+              >
+                <motion.img
                   src={product.image}
                   alt={product.name}
                   className="w-full h-full object-cover"
+                  whileHover={{
+                    scale: 1.08,
+                    transition: { duration: 0.2, ease: "easeOut" }
+                  }}
                 />
-              </div>
+              </motion.div>
               <h3 
                 className="font-medium text-gray-900 text-sm mb-1 transition-colors hover:text-primary"
               >

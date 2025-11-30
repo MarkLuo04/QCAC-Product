@@ -34,10 +34,10 @@ export default function Header() {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.3, delay: 0.2 }}
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className="lg:hidden p-2 text-white/90 hover:text-white hover:bg-white/20 rounded-lg transition-all cursor-pointer"
+          className="lg:hidden p-2 text-white hover:text-white hover:bg-white/20 rounded-lg transition-all cursor-pointer"
           aria-label="Toggle menu"
         >
-          {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          {isMobileMenuOpen ? <X size={28} strokeWidth={2.5} /> : <Menu size={28} strokeWidth={2.5} />}
         </motion.button>
 
         {/* Desktop Nav Links */}
@@ -57,7 +57,7 @@ export default function Header() {
             href="#" 
               variants={navItemVariants}
               transition={{ duration: 0.4 }}
-            className="text-white/90 hover:text-white font-medium transition-all relative group"
+            className="text-white hover:text-white font-bold text-lg transition-all relative group"
           >
               {item}
             <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all group-hover:w-full"></span>
@@ -90,26 +90,26 @@ export default function Header() {
           <motion.button
             variants={navItemVariants}
             transition={{ duration: 0.4 }}
-            className="p-2 text-white/90 hover:text-white hover:bg-white/20 rounded-lg transition-all cursor-pointer hidden sm:flex" 
+            className="p-2 text-white hover:text-white hover:bg-white/20 rounded-lg transition-all cursor-pointer hidden sm:flex"
             aria-label="Search"
           >
-            <Search size={20} />
+            <Search size={24} strokeWidth={2.5} />
           </motion.button>
           <motion.button
             variants={navItemVariants}
             transition={{ duration: 0.4 }}
-            className="p-2 text-white/90 hover:text-white hover:bg-white/20 rounded-lg transition-all cursor-pointer" 
+            className="p-2 text-white hover:text-white hover:bg-white/20 rounded-lg transition-all cursor-pointer"
             aria-label="Login"
           >
-            <User size={20} />
+            <User size={24} strokeWidth={2.5} />
           </motion.button>
           <motion.button
             variants={navItemVariants}
             transition={{ duration: 0.4 }}
-            className="p-2 text-white/90 hover:text-white hover:bg-white/20 rounded-lg transition-all cursor-pointer" 
+            className="p-2 text-white hover:text-white hover:bg-white/20 rounded-lg transition-all cursor-pointer"
             aria-label="Shopping Cart"
           >
-            <ShoppingCart size={20} />
+            <ShoppingCart size={24} strokeWidth={2.5} />
           </motion.button>
         </motion.div>
       </div>
@@ -136,7 +136,7 @@ export default function Header() {
               href="#" 
                 variants={navItemVariants}
                 transition={{ duration: 0.3 }}
-              className="text-white/90 hover:text-white font-medium transition-colors py-2"
+              className="text-white hover:text-white font-bold text-lg transition-colors py-2"
               onClick={() => setIsMobileMenuOpen(false)}
             >
                 {item}
@@ -145,10 +145,10 @@ export default function Header() {
             <motion.button
               variants={navItemVariants}
               transition={{ duration: 0.3 }}
-              className="flex items-center gap-2 text-white/90 hover:text-white font-medium transition-colors py-2 text-left"
+              className="flex items-center gap-2 text-white hover:text-white font-bold text-lg transition-colors py-2 text-left"
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              <Search size={20} />
+              <Search size={24} strokeWidth={2.5} />
               Search
             </motion.button>
           </motion.div>

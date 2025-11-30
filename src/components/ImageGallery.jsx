@@ -21,14 +21,14 @@ export default function ImageGallery({ images }) {
         <AnimatePresence mode="wait">
           <motion.img
             key={currentImageIndex}
-          src={images[currentImageIndex].src} 
-          alt={images[currentImageIndex].alt} 
-          className="w-full h-auto rounded" 
-            initial={{ opacity: 0, scale: 0.95 }}
+            src={images[currentImageIndex].src}
+            alt={images[currentImageIndex].alt}
+            className="w-full h-auto rounded"
+            initial={{ opacity: 0.8, scale: 0.98 }}
             animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.95 }}
+            exit={{ opacity: 0.8, scale: 0.98 }}
             transition={ANIMATIONS.TRANSITIONS.easeInOut}
-        />
+          />
         </AnimatePresence>
         
         {/* Navigation Arrows */}
