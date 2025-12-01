@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ANIMATIONS } from '../utils/constants.js';
 
+// Image gallery component with navigation and smooth transitions
 export default function ImageGallery({ images }) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
+  // Navigation handlers for image carousel
   const nextImage = () => {
     setCurrentImageIndex((prev) => (prev + 1) % images.length);
   };

@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import { X, Upload } from 'lucide-react';
 import { IMAGE_UPLOAD, RATING, MESSAGES } from '../utils/constants.js';
 
+// Form component for adding new product reviews
 export default function AddReviewForm({ onAddReview, onCancel }) {
+  // Form state management
   const [formData, setFormData] = useState({
     name: '',
     rating: RATING.DEFAULT,
@@ -11,6 +13,7 @@ export default function AddReviewForm({ onAddReview, onCancel }) {
   });
   const [hoverRating, setHoverRating] = useState(0);
 
+  // Form input handlers
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({
@@ -19,6 +22,7 @@ export default function AddReviewForm({ onAddReview, onCancel }) {
     }));
   };
 
+  // Star rating interaction handler
   const handleStarClick = (rating) => {
     setFormData(prev => ({
       ...prev,
@@ -26,6 +30,7 @@ export default function AddReviewForm({ onAddReview, onCancel }) {
     }));
   };
 
+  // Image upload and validation handler
   const handleImageUpload = (e) => {
     const files = Array.from(e.target.files);
     
@@ -51,6 +56,7 @@ export default function AddReviewForm({ onAddReview, onCancel }) {
     });
   };
 
+  // Remove uploaded image from form data
   const removeImage = (index) => {
     setFormData(prev => ({
       ...prev,
@@ -58,6 +64,7 @@ export default function AddReviewForm({ onAddReview, onCancel }) {
     }));
   };
 
+  // Form submission handler with validation
   const handleSubmit = (e) => {
     e.preventDefault();
     
@@ -78,6 +85,7 @@ export default function AddReviewForm({ onAddReview, onCancel }) {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4 animate-slideDown">
+      {/* Form inputs section */}
       <div className="grid sm:grid-cols-2 gap-4">
         <div>
           <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-700">
@@ -95,11 +103,12 @@ export default function AddReviewForm({ onAddReview, onCancel }) {
           />
         </div>
 
+        {/* Star rating input */}
         <div>
           <label className="block mb-2 text-sm font-medium text-gray-700">
             Rating
           </label>
-          <div 
+          <div
             className="flex gap-1"
             onMouseLeave={() => setHoverRating(0)}
           >
@@ -136,13 +145,13 @@ export default function AddReviewForm({ onAddReview, onCancel }) {
         />
       </div>
 
-      {/* Image Upload */}
+      {/* Image upload section */}
       <div>
         <label className="block mb-2 text-sm font-medium text-gray-700">
           Photos (Optional)
         </label>
-        
-        {/* Image Previews */}
+
+        {/* Uploaded image previews */}
         {formData.images.length > 0 && (
           <div className="flex flex-wrap gap-3 mb-3">
             {formData.images.map((image, index) => (
@@ -185,6 +194,7 @@ export default function AddReviewForm({ onAddReview, onCancel }) {
         </p>
       </div>
 
+      {/* Form action buttons */}
       <div className="flex gap-3 pt-2">
         <button 
           type="submit" 

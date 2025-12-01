@@ -6,7 +6,9 @@ import { RATING, ANIMATIONS } from '../utils/constants.js';
 
 const HELPFUL_STORAGE_KEY = 'review_helpful_data';
 
+// Main reviews display component with rating stats and review management
 export default function Reviews({ reviews, onAddReview }) {
+  // State for helpful button interactions and UI controls
   const [helpfulData, setHelpfulData] = useState({ counts: [], clicked: [] });
   const [isFormVisible, setIsFormVisible] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
@@ -101,7 +103,7 @@ export default function Reviews({ reviews, onAddReview }) {
     };
   }, [selectedImage]);
 
-  // Calculate average rating
+  // Rating calculations and statistics
   const averageRating = reviews.length > 0
     ? (reviews.reduce((sum, review) => sum + review.rating, 0) / reviews.length).toFixed(1)
     : 0;
@@ -112,7 +114,7 @@ export default function Reviews({ reviews, onAddReview }) {
     ratingCounts[review.rating - 1]++;
   });
 
-  // Render star display
+  // Render star rating display with partial fill support
   const renderStars = (rating) => {
     return [...Array(RATING.MAX)].map((_, i) => {
       const fillPercentage = Math.min(Math.max(rating - i, 0), 1);
@@ -140,6 +142,7 @@ export default function Reviews({ reviews, onAddReview }) {
     });
   };
 
+  // Main component render
   return (
     <>
       {/* Image Modal with fade animation */}
@@ -279,7 +282,34 @@ export default function Reviews({ reviews, onAddReview }) {
                     <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2 mt-1">
                       <div className="flex text-sm text-primary">{renderStars(review.rating)}</div>
                       <span className="text-sm text-gray-600">
-                        {new Date(review.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
+                        {(() => {
+                          const dateStr = review.date;
+                          let date;
+
+                          // Handle different date formats
+                          if (dateStr.includes('-')) {
+                            const parts = dateStr.split('-');
+                            if (parts.length === 3 && parts[0].length === 4) {
+                              // YYYY-MM-DD format
+                              date = new Date(parts[0], parts[1] - 1, parts[2]);
+                            } else if (parts.length === 2) {
+                              // MM-DD format - assume current year
+                              const currentYear = new Date().getFullYear();
+                              date = new Date(currentYear, parts[0] - 1, parts[1]);
+                            }
+                          }
+
+                          // Fallback to original parsing if format not recognized
+                          if (!date || isNaN(date.getTime())) {
+                            date = new Date(dateStr);
+                          }
+
+                          return date.toLocaleDateString('en-US', {
+                            month: 'long',
+                            day: 'numeric',
+                            year: 'numeric'
+                          });
+                        })()}
                       </span>
                     </div>
                   </div>

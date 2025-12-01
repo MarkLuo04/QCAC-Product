@@ -10,7 +10,7 @@ export default function ProductInfo({ product }) {
   };
 
   const increaseQuantity = () => {
-    setQuantity(quantity + 1);
+    if (quantity < 10) setQuantity(quantity + 1);
   };
 
   // Form elements container
@@ -107,7 +107,12 @@ export default function ProductInfo({ product }) {
           </motion.span>
           <button
             onClick={increaseQuantity}
-            className="w-10 h-10 flex items-center justify-center border-2 border-gray-300 rounded-lg cursor-pointer hover:border-primary hover:text-primary transition-all"
+            disabled={quantity >= 10}
+            className={`w-10 h-10 flex items-center justify-center border-2 rounded-lg transition-all ${
+              quantity >= 10
+                ? 'border-gray-300 text-gray-400 cursor-not-allowed opacity-50'
+                : 'border-gray-300 hover:border-primary hover:text-primary cursor-pointer'
+            }`}
           >
             +
           </button>

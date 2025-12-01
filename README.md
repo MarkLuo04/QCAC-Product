@@ -1,7 +1,5 @@
 # Linko - Yae Miko Colour-Changing Glass Cup (Product Page)
 
-## Description
-
 This is a prototype product page for a temperature colour-changing glass cup featuring Yae Miko from Genshin Impact. The page is built with modularity and reusability in mind so it can be easily adapted for other future products in the art shop.
 
 The design follows Linko Art’s requested white/teal theme and incorporates a Shopify-esque aesthetic common with modern online art shops while adding unique visual details and animations.

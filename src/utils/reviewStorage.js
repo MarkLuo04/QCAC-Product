@@ -6,21 +6,21 @@ export const sampleReviews = [
     rating: 5,
     message: "Great cup would buy again",
     images: [],
-    date: "2025-11-22"
+    date: "2025-11-25"
   },
   {
     name: "Yae Miko",
     rating: 5,
     message: "I love the color-changing effect and the aesthetics of the cup!",
     images: [],
-    date: "2025-11-20"
+    date: "2025-11-23"
   },
   {
     name: "John Appleseed",
     rating: 1,
     message: "Bad quality product. I put it in the dishwasher multiple times because I was too lazy to wash it by hand and all the designs have been rubbed off.",
     images: [emptyCup],
-    date: "2025-11-25"
+    date: "2025-11-20"
   }
 ];
 
